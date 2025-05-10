@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				game: {
+					red: '#F97474',
+					blue: '#33C3F0',
+					green: '#86D67E',
+					yellow: '#FFC876',
+					purple: '#8B5CF6',
+					pink: '#D946EF'
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +93,34 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pop': {
+					'0%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.2)' },
+					'100%': { transform: 'scale(1)' }
+				},
+				'bounce-in': {
+					'0%': { transform: 'scale(0)' },
+					'60%': { transform: 'scale(1.1)' },
+					'100%': { transform: 'scale(1)' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0', transform: 'scale(0.8)' }
+				},
+				'swirl': {
+					'0%': { transform: 'rotate(0deg) scale(1)' },
+					'50%': { transform: 'rotate(180deg) scale(0)' },
+					'100%': { transform: 'rotate(360deg) scale(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pop': 'pop 0.3s ease-in-out',
+				'bounce-in': 'bounce-in 0.5s ease-out forwards',
+				'fade-out': 'fade-out 0.3s ease-out forwards',
+				'swirl': 'swirl 0.5s ease-in-out forwards'
 			}
 		}
 	},
