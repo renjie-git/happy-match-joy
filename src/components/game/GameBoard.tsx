@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState, useCallback } from "react";
 import Block, { BlockType } from "./Block";
 import { cn } from "@/lib/utils";
-import { useToast } from "@/components/ui/toast";
+import { useToast } from "@/hooks/use-toast";  // Updated import path
 
 interface GameBoardProps {
   rows?: number;

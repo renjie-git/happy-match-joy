@@ -1,17 +1,16 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Apple, Banana, Cherry, Grape, Heart, Lemon, Orange, Strawberry } from "lucide-react";
+import { Apple, Banana, Cherry, Grape, Heart, Lemon as LemonIcon, CircleOff, Cookie } from "lucide-react";
 
 export type BlockType = "red" | "blue" | "green" | "yellow" | "purple" | "pink";
 
 const blockIcons = {
   "red": Heart,
-  "blue": Lemon,
+  "blue": CircleOff,  // Replacing Lemon with CircleOff
   "green": Apple,
   "yellow": Banana,
   "purple": Grape,
-  "pink": Strawberry,
+  "pink": Cookie,     // Replacing Strawberry with Cookie
 };
 
 const blockColors = {
