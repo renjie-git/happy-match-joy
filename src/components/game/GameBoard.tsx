@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState, useCallback } from "react";
 import Block, { BlockType } from "./Block";
 import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";  // Updated import path
+import { useToast } from "@/hooks/use-toast";
 
 interface GameBoardProps {
   rows?: number;
@@ -19,6 +20,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
   const [selectedBlock, setSelectedBlock] = useState<{ row: number; col: number } | null>(null);
   const [matchedBlocks, setMatchedBlocks] = useState<Set<string>>(new Set());
   const [isProcessing, setIsProcessing] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   const blockTypes: BlockType[] = ["red", "blue", "green", "yellow", "purple", "pink"];
   
@@ -67,9 +69,13 @@ const GameBoard: React.FC<GameBoardProps> = ({
     setBoard(newBoard);
   }, [rows, columns, blockTypes]);
 
+  // Initialize board only once on component mount
   useEffect(() => {
-    initializeBoard();
-  }, [initializeBoard]);
+    if (initialLoad) {
+      initializeBoard();
+      setInitialLoad(false);
+    }
+  }, [initializeBoard, initialLoad]);
 
   const checkMatches = useCallback(() => {
     if (!board.length) return false;
@@ -189,8 +195,8 @@ const GameBoard: React.FC<GameBoardProps> = ({
     
     // Check for new matches after blocks have settled
     setTimeout(() => {
-      const hasMatches = checkMatches();
-      if (!hasMatches) {
+      const hasNewMatches = checkMatches();
+      if (!hasNewMatches) {
         setIsProcessing(false);
       }
     }, 500);
